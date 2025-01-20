@@ -96,7 +96,7 @@ server {
 {% if site.mode in ['serve', 'server'] and site.server.e404_redirect_root | bool %}
   # redirect to root-page unknown site was opened
   error_page 404 = @redirect_404;
-  location @redirect_404 { return 302 /; }
+  location @redirect_404 { return 302 {{ site.server.e404_redirect_root_target }}; }
 
 {% endif %}
 {% if site.config_additions | length > 0 %}
